@@ -1,53 +1,79 @@
-
-*{
+* {
     padding: 0;
     margin: 0;
     font-family: 'Edu SA Beginner', cursive;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
-.hero{
+
+
+/* Replace your existing .hero CSS with this: */
+.hero {
     width: 100%;
     height: 100vh;
     background-color: black;
     background-image: url(./cris.jpg);
-    background-size: auto;
-    background-position: right;
+    background-size: cover;
+    /* Changed from 'auto' to 'cover' */
+    background-position: center;
+    /* Changed from 'right' to 'center' */
     background-repeat: no-repeat;
+    position: relative;
+    /* Added for better positioning */
 }
-nav{
+
+.hero-alternative {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    background-image: url(./cris.jpg);
+    background-size: cover;
+    background-position: center right;
+    /* This keeps focus on right but fills left space */
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+
+nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 40px; 
+    padding: 40px;
     padding-left: 9%;
     /* background-attachment: fixed; */
 }
-.logo{
+
+.logo {
     color: white;
     font-size: 35px;
     letter-spacing: 1px;
     cursor: pointer;
 }
-span{
+
+span {
     color: #f9004d;
 }
-nav ul li{
+
+nav ul li {
     list-style-type: none;
     display: inline-block;
     padding: 10px 25px;
 }
-nav ul li a{
+
+nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     text-transform: capitalize;
 }
-nav ul li a:hover{
-    color:#f9004d;
+
+nav ul li a:hover {
+    color: #f9004d;
     transition: .4s;
 }
-.btn{
+
+.btn {
     background-color: #f9004d;
     color: white;
     text-decoration: none;
@@ -57,44 +83,57 @@ nav ul li a:hover{
     border-radius: 30px;
     transition: transform .4s;
 }
-.btn:hover{
+
+.btn:hover {
     transform: scale(1.2);
 }
-.content{
+
+/* Also update your content positioning for better balance: */
+.content {
     position: absolute;
     top: 50%;
     left: 8%;
     transform: translateY(-50%);
+    z-index: 2;
+    /* Added to ensure content stays above background */
+    max-width: 600px;
+    /* Added to prevent text from stretching too wide */
 }
-h1{
+
+h1 {
     color: white;
     margin: 20px 0px 20px;
     font-size: 75px;
 }
-h3{
+
+h3 {
     color: white;
     font-size: 25px;
     margin-bottom: 50px;
 }
-h4{
-    color:#fcfc;
+
+h4 {
+    color: #fcfc;
     letter-spacing: 2px;
-    font-size: 20px ;
+    font-size: 20px;
 }
-.newslatter form{
+
+.newslatter form {
     width: 380px;
     max-width: 100%;
     position: relative;
 }
-.newslatter form input:first-child{
+
+.newslatter form input:first-child {
     display: inline-block;
     width: 100%;
     padding: 14px 130px 14px 15px;
     border: 2px solid #f9004d;
     outline: none;
-    border-radius: 30px ;
+    border-radius: 30px;
 }
-.newslatter form input:last-child{
+
+.newslatter form input:last-child {
     position: absolute;
     display: inline-block;
     outline: none;
@@ -103,23 +142,27 @@ h4{
     border-radius: 30px;
     background-color: #f9004d;
     color: white;
-    box-shadow: 0px 0px 5px #000,0px 0px 15px #858585;
+    box-shadow: 0px 0px 5px #000, 0px 0px 15px #858585;
     top: 6px;
     right: 6px;
-}  
-.about{
+}
+
+.about {
     width: 100%;
     padding: 100px 0px;
     background-color: rgba(0, 0, 0, 0.945);
 }
-.about img{
+
+.about img {
     height: auto;
     width: 430px;
 }
-.about-text{
+
+.about-text {
     width: 550px;
 }
-.main{
+
+.main {
     width: 1130px;
     max-width: 95%;
     margin: 0 auto;
@@ -127,26 +170,30 @@ h4{
     align-items: center;
     justify-content: space-around;
 }
-.about-text h2{
+
+.about-text h2 {
     color: white;
     font-size: 75px;
     text-transform: capitalize;
-    margin-bottom: 20px ;
+    margin-bottom: 20px;
 }
-.about-text h5{
+
+.about-text h5 {
     color: white;
     font-size: 22px;
     text-transform: capitalize;
-    margin-bottom: 25px ;
+    margin-bottom: 25px;
 }
-.about-text p{
+
+.about-text p {
     color: #fcfc;
     font-size: 18px;
     line-height: 28px;
     letter-spacing: 1px;
-    margin-bottom: 45px ;
+    margin-bottom: 45px;
 }
-button{
+
+button {
     background-color: #f9004d;
     color: white;
     text-decoration: none;
@@ -156,30 +203,35 @@ button{
     border-radius: 30px;
     transition: .4s;
 }
-button:hover{
+
+button:hover {
     background-color: transparent;
     border: 2px solid;
     cursor: pointer;
 }
-.service{
+
+.service {
     background-color: #101010;
     width: 100%;
-    padding: 100px 0px;  
+    padding: 100px 0px;
 }
-title h2{
+
+title h2 {
     color: white;
     font-size: 75px;
     width: 1130px;
     margin: 30px auto;
     text-align: center;
 }
-.box{
+
+.box {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 400px;
 }
-.card{
+
+.card {
     height: 365px;
     width: 335px;
     padding: 20px 35px;
@@ -190,25 +242,29 @@ title h2{
     overflow: hidden;
     text-align: center;
 }
-.card i{
+
+.card i {
     font-size: 50px;
     display: block;
     text-align: center;
     margin: 25px 0px;
     color: #f9004d;
 }
-h5{
+
+h5 {
     color: white;
-    font-size:23px;
+    font-size: 23px;
     margin-bottom: 15px;
 }
-.pra p{
+
+.pra p {
     color: #fcfc;
     font-size: 16px;
     line-height: 27px;
     margin-bottom: 25px;
 }
-.card .button{
+
+.card .button {
     background-color: #f9004d;
     color: white;
     text-decoration: none;
@@ -218,27 +274,31 @@ h5{
     border-radius: 30px;
     transition: .4s;
 }
-.card .button:hover{
+
+.card .button:hover {
     background-color: transparent;
     border: 2px solid;
     cursor: pointer;
 }
-.contact-me{
+
+.contact-me {
     width: 100%;
-    height:290px;
+    height: 290px;
     background-color: #191919;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 }
-.contact-me p{
+
+.contact-me p {
     color: white;
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 25px;
-} 
-.contact-me .button-two{
+}
+
+.contact-me .button-two {
     background-color: #f9004d;
     color: white;
     text-decoration: none;
@@ -248,12 +308,14 @@ h5{
     border-radius: 30px;
     transition: .4s;
 }
-.contact-me .button-two:hover{
+
+.contact-me .button-two:hover {
     background-color: transparent;
     border: 2px solid;
     cursor: pointer;
 }
-footer{
+
+footer {
     position: relative;
     width: 100%;
     height: 400px;
@@ -264,23 +326,27 @@ footer{
     justify-content: center;
 
 }
-footer p:nth-child(1){
+
+footer p:nth-child(1) {
     color: white;
     font-size: 30px;
     margin-bottom: 20px;
     font-weight: bold;
 }
-footer p:nth-child(2){
+
+footer p:nth-child(2) {
     color: white;
     font-size: 17px;
     width: 500px;
     text-align: center;
     line-height: 26px;
 }
-.social{
+
+.social {
     display: flex;
 }
-.social a{
+
+.social a {
     width: 45px;
     height: 45px;
     display: flex;
@@ -293,13 +359,191 @@ footer p:nth-child(2){
     text-decoration: none;
     font-size: 20px;
 }
-.social a:hover{
+
+.social a:hover {
     transform: scale(1.3);
     transition: .3s;
 }
-.end{
+
+.end {
     position: absolute;
     color: #f9004d;
     bottom: 35px;
     font-size: 14px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .main {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-text {
+        width: 90%;
+        text-align: center;
+    }
+
+    .about img {
+        width: 80%;
+        max-width: 350px;
+        margin-bottom: 20px;
+    }
+
+    .service .title h2 {
+        font-size: 50px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 900px) {
+    nav {
+        flex-direction: column;
+        padding: 20px;
+        padding-left: 0;
+    }
+
+    .logo {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    nav ul li {
+        padding: 8px 15px;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    .about-text h2 {
+        font-size: 45px;
+    }
+
+    .about-text h5 {
+        font-size: 18px;
+    }
+
+    .card {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .box {
+        flex-direction: column;
+        min-height: unset;
+    }
+
+    footer {
+        height: auto;
+        padding: 30px 0;
+    }
+
+    footer p:nth-child(2) {
+        width: 90%;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        height: 60vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .content {
+        position: static;
+        transform: none;
+        left: 0;
+        top: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin: 10px 0;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+    .about {
+        padding: 40px 0;
+    }
+
+    .about img {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .about-text {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .about-text h2 {
+        font-size: 28px;
+    }
+
+    .about-text h5 {
+        font-size: 15px;
+    }
+
+    .about-text p {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .service {
+        padding: 40px 0;
+    }
+
+    .card {
+        height: auto;
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .contact-me {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .contact-me p {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .social a {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        margin: 10px 5px;
+    }
+
+    footer p:nth-child(1) {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    footer p:nth-child(2) {
+        font-size: 13px;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .end {
+        font-size: 12px;
+        bottom: 10px;
+    }
 }
