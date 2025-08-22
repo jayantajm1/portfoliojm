@@ -113,7 +113,7 @@ function initSmoothScrolling() {
 
 // Contact Form Handling
 function initContactForm() {
-  const contactForm = document.getElementById("contactForm");
+  const contactForm = document.getElementById("contact-form");
 
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
@@ -121,8 +121,8 @@ function initContactForm() {
 
       // Get form data
       const formData = new FormData(this);
-      const name = formData.get("name");
-      const email = formData.get("email");
+      const name = formData.get("from_name");
+      const email = formData.get("from_email");
       const subject = formData.get("subject");
       const message = formData.get("message");
 
@@ -131,7 +131,6 @@ function initContactForm() {
         showNotification("Please fill in all fields", "error");
         return;
       }
-
       // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
@@ -139,24 +138,40 @@ function initContactForm() {
         return;
       }
 
-      // Simulate form submission (replace with actual EmailJS implementation)
-      showNotification("Message sent successfully!", "success");
-      contactForm.reset();
+      // Show sending message
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.innerHTML;
+      submitButton.innerHTML =
+        '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitButton.disabled = true;
 
-      // EmailJS implementation (uncomment and configure)
-      /*
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message
-            }).then(function(response) {
-                showNotification('Message sent successfully!', 'success');
-                contactForm.reset();
-            }, function(error) {
-                showNotification('Failed to send message. Please try again.', 'error');
-            });
-            */
+      // EmailJS implementation
+      emailjs
+        .send("service_portfoliojm", "template_5euef4n", {
+          name: name, // For {{name}} in your template
+          from_name: name, // For {{from_name}} if you update template
+          from_email: email,
+          subject: subject,
+          message: message,
+          to_email: "jayantaofficial84@gmail.com", // For {{to_email}} in template
+        })
+        .then(
+          function (response) {
+            showNotification("Message sent successfully!", "success");
+            contactForm.reset();
+            submitButton.innerHTML = originalButtonText;
+            submitButton.disabled = false;
+          },
+          function (error) {
+            console.error("EmailJS Error:", error);
+            showNotification(
+              "Failed to send message. Please try again.",
+              "error"
+            );
+            submitButton.innerHTML = originalButtonText;
+            submitButton.disabled = false;
+          }
+        );
     });
   }
 }
@@ -498,6 +513,10 @@ document.addEventListener("DOMContentLoaded", function () {
   createScrollToTop();
   initMobileMenu();
   animateCounters();
+  // Initialize EmailJS
+  if (typeof emailjs !== "undefined") {
+    emailjs.init("6MWgYgaBSkGv2uS19"); // Your EmailJS Public Key
+  }
 
   // Initialize AOS if available
   if (typeof AOS !== "undefined") {
