@@ -1,9 +1,71 @@
+/* Root Variables for Theme */
+:root {
+    --primary-color: #f9004d;
+    --secondary-color: #fcfc;
+    --bg-color: #000000;
+    --bg-secondary: #101010;
+    --bg-tertiary: #191919;
+    --text-color: #ffffff;
+    --text-secondary: #fcfc;
+    --card-bg: #191919;
+    --border-color: #333;
+    --shadow: 0px 0px 15px rgba(249, 0, 77, 0.3);
+    --gradient: linear-gradient(135deg, #f9004d, #ff6b6b);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #ffffff;
+    --text-color: #000000;
+    --text-secondary: #666666;
+    --card-bg: #ffffff;
+    --border-color: #e9ecef;
+    --shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Edu SA Beginner', cursive;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 
@@ -413,6 +475,11 @@ footer p:nth-child(2) {
         padding: 8px 15px;
     }
 
+    .theme-toggle {
+        top: 100px;
+        right: 20px;
+    }
+
     h1 {
         font-size: 45px;
     }
@@ -529,6 +596,14 @@ footer p:nth-child(2) {
         height: 35px;
         font-size: 16px;
         margin: 10px 5px;
+    }
+
+    .theme-toggle {
+        top: 80px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
     }
 
     footer p:nth-child(1) {
