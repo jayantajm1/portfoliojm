@@ -915,6 +915,132 @@ nav {
 }
 
 /* ===========================================
+   ABOUT SECTION
+   =========================================== */
+
+.about {
+    padding: var(--spacing-xxl) 0;
+    background: var(--bg-secondary);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, var(--accent-color), #ff6b7a, var(--accent-color), #ff3742);
+    background-size: 400% 400%;
+    border-radius: 50%;
+    z-index: -1;
+    animation: gradientRotate 3s ease-in-out infinite;
+}
+
+.image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: 50%;
+    z-index: -1;
+    animation: shimmer 2s linear infinite;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform var(--transition-normal);
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+@keyframes gradientRotate {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.about-text {
+    padding-left: var(--spacing-lg);
+}
+
+.about-text h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-text h5 {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-lg);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-xl);
+    font-size: 1.1rem;
+}
+
+.about-text .btn-primary {
+    margin-top: var(--spacing-md);
+}
+
+/* ===========================================
    SKILLS SECTION
    =========================================== */
 
@@ -2645,6 +2771,27 @@ footer {
     height: 3px;
     background: var(--text-primary);
     transition: all 0.3s ease;
+  }
+  
+  /* Mobile About */
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .image-wrapper {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+  }
+  
+  .about-text {
+    padding-left: 0;
+  }
+  
+  .about-text h2 {
+    font-size: 2.5rem;
   }
   
   /* Mobile Projects */
