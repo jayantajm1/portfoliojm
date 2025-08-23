@@ -196,4 +196,4 @@ If you need help with any of these steps:
 2. Search for specific error messages
 3. Consider reaching out to the respective platform's support
 
-Good luck with your enhanced portfolio! 🎉
+Good luck with enhanced portfolio! 🎉
