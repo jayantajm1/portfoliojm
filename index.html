@@ -1313,6 +1313,62 @@
       </div>
     </footer>
 
+    <!-- Chatbot -->
+    <div class="chatbot-container" id="chatbot">
+      <div class="chatbot-header">
+        <div class="chatbot-header-content">
+          <i class="fas fa-robot"></i>
+          <div>
+            <h4>Portfolio Assistant</h4>
+            <span class="status-online">Online</span>
+          </div>
+        </div>
+        <button class="chatbot-close" id="chatbot-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <div class="bot-message">
+          <div class="message-content">
+            Hi! I'm Jayanta's portfolio assistant. How can I help you today?
+          </div>
+        </div>
+      </div>
+      <div class="chatbot-suggestions" id="chatbot-suggestions">
+        <button class="suggestion-btn" data-question="skills">
+          What are your skills?
+        </button>
+        <button class="suggestion-btn" data-question="experience">
+          Tell me about your experience
+        </button>
+        <button class="suggestion-btn" data-question="education">
+          What's your education?
+        </button>
+        <button class="suggestion-btn" data-question="projects">
+          Show me your projects
+        </button>
+        <button class="suggestion-btn" data-question="contact">
+          How can I contact you?
+        </button>
+      </div>
+      <div class="chatbot-input">
+        <input
+          type="text"
+          id="chatbot-input-field"
+          placeholder="Type a message..."
+        />
+        <button id="chatbot-send">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-toggle" id="chatbot-toggle">
+      <i class="fas fa-comments"></i>
+      <span class="chatbot-badge">1</span>
+    </button>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="emailjs-config.js"></script>

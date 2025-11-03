@@ -657,3 +657,202 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
+// ============== Chatbot Functionality ==============
+
+// Q&A Database
+const chatbotQA = {
+  skills: {
+    keywords: [
+      "skill",
+      "technology",
+      "tech",
+      "languages",
+      "programming",
+      "what you know",
+    ],
+    answer:
+      "I specialize in Web Development (HTML, CSS, JavaScript, React), Backend Development (Node.js, Python, PHP), Mobile Development (Flutter, React Native), Database Management (MySQL, MongoDB), and Cloud Services (AWS, Firebase, Google Cloud).",
+  },
+  experience: {
+    keywords: ["experience", "work", "job", "worked", "career", "professional"],
+    answer:
+      "I have 2+ years of professional experience as a Full Stack Developer. I've worked on various projects including e-commerce platforms, job notification systems, educational websites, and custom web applications. Check out my Experience section for detailed timeline!",
+  },
+  education: {
+    keywords: [
+      "education",
+      "study",
+      "degree",
+      "qualification",
+      "school",
+      "university",
+      "college",
+    ],
+    answer:
+      "I hold a Bachelor's degree in Computer Science with specialization in Software Engineering. I've also completed numerous online certifications in Web Development, Cloud Computing, and Cybersecurity. View my Education tab for more details!",
+  },
+  projects: {
+    keywords: [
+      "project",
+      "work sample",
+      "portfolio",
+      "built",
+      "created",
+      "developed",
+    ],
+    answer:
+      "I've built several exciting projects: 🔹 Job Notifier - Government job alerts platform 🔹 TritoyBox - Educational website for students 🔹 WebTools - Collection of useful web utilities 🔹 Fun Proposal - Creative proposal website. Check the Projects section to see more!",
+  },
+  contact: {
+    keywords: [
+      "contact",
+      "reach",
+      "email",
+      "phone",
+      "hire",
+      "available",
+      "touch",
+    ],
+    answer:
+      "You can reach me via email at codewithcris@gmail.com or call me at +91 8088899970. Feel free to use the contact form below or connect with me on LinkedIn and GitHub. I'm always open to new opportunities!",
+  },
+  services: {
+    keywords: ["service", "offer", "provide", "do", "help"],
+    answer:
+      "I offer three main services: 💻 Web Development - Full-stack web applications 📱 App Development - Cross-platform mobile apps ☁️ Cloud Solutions - Scalable cloud infrastructure. Let me know what you need!",
+  },
+  location: {
+    keywords: ["location", "where", "based", "from", "live", "city"],
+    answer:
+      "I'm based in India and work with clients globally. I'm comfortable working remotely and across different time zones to deliver quality solutions!",
+  },
+  technologies: {
+    keywords: ["tools", "framework", "library", "software", "use"],
+    answer:
+      "I work with modern technologies including React, Node.js, Flutter, Firebase, MongoDB, MySQL, AWS, Git, Docker, and more. I stay updated with the latest industry trends and continuously learn new tools!",
+  },
+  availability: {
+    keywords: ["available", "free", "time", "when", "schedule"],
+    answer:
+      "I'm currently available for freelance projects and full-time opportunities. I typically respond within 24 hours. Use the contact form or email me directly to discuss your project!",
+  },
+  hire: {
+    keywords: ["hire", "cost", "price", "rate", "budget", "quote"],
+    answer:
+      "I'd love to work with you! Project costs vary based on requirements, complexity, and timeline. Please fill out the contact form with your project details, and I'll provide a customized quote within 24 hours!",
+  },
+};
+
+// Chatbot Elements
+const chatbotToggle = document.querySelector(".chatbot-toggle");
+const chatbotContainer = document.querySelector(".chatbot-container");
+const chatbotClose = document.querySelector(".chatbot-close");
+const chatbotMessages = document.querySelector(".chatbot-messages");
+const chatbotInput = document.querySelector(".chatbot-input");
+const chatbotSend = document.querySelector(".chatbot-send");
+const chatbotSuggestions = document.querySelectorAll(".suggestion-btn");
+
+// Chatbot State
+let isChatbotOpen = false;
+
+// Toggle Chatbot
+function toggleChatbot() {
+  isChatbotOpen = !isChatbotOpen;
+  chatbotContainer.classList.toggle("active");
+  chatbotToggle.classList.toggle("active");
+
+  // Remove badge when opened
+  if (isChatbotOpen) {
+    chatbotToggle.querySelector(".chatbot-badge").style.display = "none";
+
+    // Show welcome message if no messages
+    if (chatbotMessages.children.length === 0) {
+      addBotMessage(
+        "👋 Hi! I'm here to help you learn more about me and my work. Feel free to ask anything or click on a suggestion below!"
+      );
+    }
+  }
+}
+
+// Add Bot Message
+function addBotMessage(message) {
+  const messageDiv = document.createElement("div");
+  messageDiv.className = "chatbot-message bot-message";
+  messageDiv.textContent = message;
+  chatbotMessages.appendChild(messageDiv);
+  scrollToBottom();
+}
+
+// Add User Message
+function addUserMessage(message) {
+  const messageDiv = document.createElement("div");
+  messageDiv.className = "chatbot-message user-message";
+  messageDiv.textContent = message;
+  chatbotMessages.appendChild(messageDiv);
+  scrollToBottom();
+}
+
+// Scroll to Bottom
+function scrollToBottom() {
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+// Find Answer
+function findAnswer(userMessage) {
+  const lowerMessage = userMessage.toLowerCase();
+
+  // Check each Q&A entry
+  for (const [key, qa] of Object.entries(chatbotQA)) {
+    for (const keyword of qa.keywords) {
+      if (lowerMessage.includes(keyword)) {
+        return qa.answer;
+      }
+    }
+  }
+
+  // Default response if no match
+  return "I'm not sure about that. Try asking about my skills, experience, education, projects, services, or how to contact me! You can also use the suggestion buttons below.";
+}
+
+// Handle User Input
+function handleUserInput() {
+  const userMessage = chatbotInput.value.trim();
+
+  if (userMessage === "") return;
+
+  // Add user message
+  addUserMessage(userMessage);
+  chatbotInput.value = "";
+
+  // Simulate typing delay
+  setTimeout(() => {
+    const answer = findAnswer(userMessage);
+    addBotMessage(answer);
+  }, 500);
+}
+
+// Event Listeners
+chatbotToggle.addEventListener("click", toggleChatbot);
+chatbotClose.addEventListener("click", toggleChatbot);
+
+chatbotSend.addEventListener("click", handleUserInput);
+
+chatbotInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    handleUserInput();
+  }
+});
+
+// Suggestion Buttons
+chatbotSuggestions.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const question = btn.textContent;
+    addUserMessage(question);
+
+    setTimeout(() => {
+      const answer = findAnswer(question);
+      addBotMessage(answer);
+    }, 500);
+  });
+});
