@@ -1040,6 +1040,166 @@ nav {
     margin-top: var(--spacing-md);
 }
 
+/* About Tabs - Skills, Experience, Education */
+.about-tabs {
+    margin-top: var(--spacing-xxl);
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+}
+
+.tabs-header {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width var(--transition-normal);
+}
+
+.tab-btn.active {
+    color: var(--accent-color);
+}
+
+.tab-btn.active::after {
+    width: 100%;
+}
+
+.tab-btn:hover {
+    color: var(--accent-color);
+}
+
+.tabs-content {
+    padding: var(--spacing-lg) 0;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Skills Categories */
+.skills-categories {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.skill-category {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.skill-category h4 {
+    margin: 0;
+    min-width: 180px;
+}
+
+.category-label {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.skill-category p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+/* Timeline List for Experience & Education */
+.timeline-list {
+    display: grid;
+    gap: var(--spacing-xl);
+}
+
+.timeline-entry {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: var(--spacing-lg);
+    position: relative;
+}
+
+.timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 30px;
+    bottom: -30px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-entry:last-child::before {
+    display: none;
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    margin-top: 5px;
+    box-shadow: 0 0 0 4px rgba(239, 39, 111, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-content-info h4 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.timeline-content-info .company {
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.timeline-content-info .duration {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.8;
+}
+
+.timeline-content-info .description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+}
+
 /* ===========================================
    SKILLS SECTION
    =========================================== */
@@ -2792,6 +2952,45 @@ footer {
   
   .about-text h2 {
     font-size: 2.5rem;
+  }
+
+  /* Mobile Tabs */
+  .about-tabs {
+    padding: var(--spacing-md);
+  }
+
+  .tabs-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .tab-btn {
+    width: 100%;
+    text-align: left;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .skill-category {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .skill-category h4 {
+    min-width: auto;
+  }
+
+  .timeline-entry {
+    grid-template-columns: 15px 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .timeline-dot {
+    width: 15px;
+    height: 15px;
+  }
+
+  .timeline-entry::before {
+    left: 7px;
   }
   
   /* Mobile Projects */

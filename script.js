@@ -563,6 +563,33 @@ window.addEventListener("resize", () => {
   }
 });
 
+// About Tabs Functionality
+function initAboutTabs() {
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabPanes = document.querySelectorAll(".tab-pane");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Remove active class from all buttons and panes
+      tabButtons.forEach((btn) => btn.classList.remove("active"));
+      tabPanes.forEach((pane) => pane.classList.remove("active"));
+
+      // Add active class to clicked button
+      button.classList.add("active");
+
+      // Show corresponding tab pane
+      const tabId = button.getAttribute("data-tab");
+      const tabPane = document.getElementById(tabId);
+      if (tabPane) {
+        tabPane.classList.add("active");
+      }
+    });
+  });
+}
+
+// Initialize tabs when DOM is loaded
+document.addEventListener("DOMContentLoaded", initAboutTabs);
+
 // Service Worker Registration (for PWA functionality)
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
