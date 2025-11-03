@@ -727,19 +727,23 @@
           </article>
           <article class="blog-card">
             <div class="blog-image">
-              <img src="./blog3.jpg" alt="Blog Post" />
+              <img
+                src="./cyber-security-blog.jpg"
+                alt="Cybersecurity in Modern Applications"
+              />
             </div>
             <div class="blog-content">
               <div class="blog-meta">
-                <span class="blog-date">Dec 5, 2024</span>
+                <span class="blog-date">Nov 15, 2024</span>
                 <span class="blog-category">Security</span>
               </div>
               <h3>Cybersecurity in Modern Applications</h3>
               <p>
                 Essential cybersecurity practices every developer should know to
-                build secure applications.
+                build secure, resilient applications and protect against modern
+                threats.
               </p>
-              <a href="#" class="btn-link">Read More</a>
+              <a href="#cyber-security-blog" class="btn-link">Read More</a>
             </div>
           </article>
         </div>
@@ -905,6 +909,258 @@
               application?
             </p>
             <a href="#contact" class="btn-primary">Get Started Today</a>
+          </div>
+
+          <div class="blog-navigation">
+            <a href="#blog" class="btn-secondary">← Back to Blog</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cybersecurity Blog Post Detail Section -->
+    <section class="blog-detail" id="cyber-security-blog" style="display: none">
+      <div class="container">
+        <div class="blog-detail-header">
+          <span class="blog-category-tag">Security</span>
+          <h1>Cybersecurity in Modern Applications</h1>
+          <div class="blog-meta-info">
+            <div class="author-info">
+              <img
+                src="./index.jpg"
+                alt="Jayanta Mardi"
+                class="author-avatar"
+              />
+              <div>
+                <h4>Jayanta Mardi</h4>
+                <p class="verified">✓ Verified Expert in Engineering</p>
+              </div>
+            </div>
+            <span class="blog-updated">Updated: Nov 15, 2024</span>
+          </div>
+          <p class="author-bio">
+            Jayanta Mardi is an expert in software architecture, cybersecurity &
+            secure application development.
+          </p>
+          <div class="expertise-tags">
+            <span class="tag">Security</span>
+            <span class="tag">DevSecOps</span>
+            <span class="tag">Best Practices</span>
+          </div>
+        </div>
+
+        <div class="blog-detail-image">
+          <img
+            src="./cyber-security-blog.jpg"
+            alt="Cybersecurity in Modern Applications"
+          />
+        </div>
+
+        <div class="blog-detail-content">
+          <div class="quick-overview">
+            <h3>Quick Overview:</h3>
+            <p>
+              In today's digital landscape, cybersecurity is not just an
+              option—it's a necessity. This comprehensive guide explores
+              essential security practices, common vulnerabilities, and modern
+              defense strategies that every developer and business owner must
+              understand to protect their applications and user data from
+              evolving cyber threats.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2>Why Cybersecurity Matters</h2>
+            <p>
+              Cybersecurity threats are growing exponentially, with data
+              breaches, ransomware attacks, and security vulnerabilities
+              affecting businesses of all sizes. A single security incident can
+              result in financial losses, reputation damage, legal consequences,
+              and loss of customer trust. Implementing robust cybersecurity
+              measures is essential for protecting your business, your
+              customers, and your digital assets.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2>Common Security Threats</h2>
+            <h3>1. SQL Injection</h3>
+            <p>
+              Attackers exploit vulnerabilities in database queries to access,
+              modify, or delete sensitive data. Always use parameterized queries
+              and prepared statements to prevent SQL injection attacks.
+            </p>
+
+            <h3>2. Cross-Site Scripting (XSS)</h3>
+            <p>
+              Malicious scripts are injected into web pages viewed by other
+              users. Implement proper input validation and output encoding to
+              protect against XSS attacks.
+            </p>
+
+            <h3>3. Cross-Site Request Forgery (CSRF)</h3>
+            <p>
+              Attackers trick users into performing unwanted actions. Use CSRF
+              tokens and validate origin headers to prevent these attacks.
+            </p>
+
+            <h3>4. Authentication & Authorization Flaws</h3>
+            <p>
+              Weak passwords, broken authentication, and improper access
+              controls can lead to unauthorized access. Implement strong
+              authentication mechanisms, multi-factor authentication, and
+              role-based access control.
+            </p>
+
+            <h3>5. Data Exposure</h3>
+            <p>
+              Sensitive data transmitted or stored without proper encryption is
+              vulnerable to interception. Always use HTTPS, encrypt data at
+              rest, and follow data protection best practices.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2>Essential Security Best Practices</h2>
+            <ol>
+              <li>
+                <strong>Authentication & Authorization:</strong> Implement JWT
+                tokens, OAuth 2.0, and role-based access control (RBAC)
+              </li>
+              <li>
+                <strong>Data Encryption:</strong> Use TLS/SSL for data in
+                transit and AES encryption for data at rest
+              </li>
+              <li>
+                <strong>Input Validation:</strong> Validate and sanitize all
+                user inputs to prevent injection attacks
+              </li>
+              <li>
+                <strong>Security Headers:</strong> Implement CSP,
+                X-Frame-Options, HSTS, and other security headers
+              </li>
+              <li>
+                <strong>Regular Updates:</strong> Keep all dependencies,
+                frameworks, and libraries up to date
+              </li>
+              <li>
+                <strong>Logging & Monitoring:</strong> Implement comprehensive
+                logging and real-time security monitoring
+              </li>
+              <li>
+                <strong>Security Testing:</strong> Conduct regular penetration
+                testing and vulnerability assessments
+              </li>
+              <li>
+                <strong>Secure Configuration:</strong> Follow security hardening
+                guidelines for servers and databases
+              </li>
+            </ol>
+          </div>
+
+          <div class="content-section">
+            <h2>Implementing Secure Authentication</h2>
+            <p>
+              Modern applications require robust authentication mechanisms. Use
+              industry-standard protocols like OAuth 2.0, OpenID Connect, and
+              implement multi-factor authentication (MFA) for sensitive
+              operations. Store passwords using strong hashing algorithms like
+              bcrypt or Argon2, never plain text or weak hashing methods.
+            </p>
+            <h3>Key Authentication Features:</h3>
+            <ul>
+              <li>JWT (JSON Web Tokens) for stateless authentication</li>
+              <li>Refresh token rotation to prevent token theft</li>
+              <li>Session management with secure cookies</li>
+              <li>Account lockout mechanisms to prevent brute force attacks</li>
+              <li>Password complexity requirements and strength validation</li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h2>API Security</h2>
+            <p>
+              APIs are critical components of modern applications and require
+              special security attention. Implement rate limiting to prevent
+              abuse, use API keys and authentication tokens, validate all
+              inputs, and follow the principle of least privilege when designing
+              API permissions.
+            </p>
+            <h3>API Security Checklist:</h3>
+            <ul>
+              <li>Use HTTPS exclusively for all API communications</li>
+              <li>Implement OAuth 2.0 for API authentication</li>
+              <li>Rate limiting and throttling to prevent DDoS attacks</li>
+              <li>Input validation and schema validation</li>
+              <li>API versioning and deprecation strategies</li>
+              <li>Comprehensive API documentation with security guidelines</li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h2>Security Tools & Technologies</h2>
+            <p>
+              Leverage modern security tools to enhance your application's
+              security posture:
+            </p>
+            <ul>
+              <li>
+                <strong>Static Analysis:</strong> SonarQube, ESLint security
+                plugins
+              </li>
+              <li>
+                <strong>Dependency Scanning:</strong> Snyk, OWASP
+                Dependency-Check
+              </li>
+              <li>
+                <strong>Container Security:</strong> Docker security scanning,
+                Kubernetes security policies
+              </li>
+              <li>
+                <strong>WAF (Web Application Firewall):</strong> CloudFlare, AWS
+                WAF
+              </li>
+              <li>
+                <strong>Security Monitoring:</strong> Prometheus, Grafana, ELK
+                Stack
+              </li>
+              <li>
+                <strong>Penetration Testing:</strong> Burp Suite, OWASP ZAP
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h2>DevSecOps: Security in Development</h2>
+            <p>
+              Integrate security into every phase of the software development
+              lifecycle. DevSecOps emphasizes automation, continuous security
+              testing, and collaboration between development, security, and
+              operations teams. This approach helps identify and fix security
+              issues early, reducing costs and improving overall security
+              posture.
+            </p>
+          </div>
+
+          <div class="content-section">
+            <h2>Compliance & Regulations</h2>
+            <p>
+              Understanding and complying with security regulations is crucial
+              for modern applications. Familiarize yourself with GDPR (data
+              protection), HIPAA (healthcare), PCI DSS (payment cards), and
+              other relevant compliance standards for your industry. Implement
+              proper data governance, privacy policies, and audit trails to
+              ensure compliance.
+            </p>
+          </div>
+
+          <div class="cta-section">
+            <h3>Secure Your Application Today</h3>
+            <p>
+              Don't wait for a security breach to take action. Protect your
+              business and users now!
+            </p>
+            <a href="#contact" class="btn-primary">Get Security Consultation</a>
           </div>
 
           <div class="blog-navigation">

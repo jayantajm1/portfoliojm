@@ -595,39 +595,53 @@ document.addEventListener("DOMContentLoaded", function () {
   // Handle "Read More" clicks on blog cards
   const blogLinks = document.querySelectorAll(".blog-card .btn-link");
   const blogSection = document.querySelector(".blog");
-  const blogDetailSection = document.querySelector(".blog-detail");
+  const blogDetailSections = document.querySelectorAll(".blog-detail");
 
   blogLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       const href = this.getAttribute("href");
       if (href && href.startsWith("#") && href !== "#") {
         e.preventDefault();
-        // Hide blog grid and show blog detail
+
+        // Hide blog grid
         if (blogSection) blogSection.style.display = "none";
-        if (blogDetailSection) {
-          blogDetailSection.style.display = "block";
+
+        // Hide all blog detail sections first
+        blogDetailSections.forEach((section) => {
+          section.style.display = "none";
+        });
+
+        // Show the specific blog detail section
+        const targetSection = document.querySelector(href);
+        if (targetSection) {
+          targetSection.style.display = "block";
           // Scroll to top of blog detail
-          blogDetailSection.scrollIntoView({ behavior: "smooth" });
+          targetSection.scrollIntoView({ behavior: "smooth" });
         }
       }
     });
   });
 
-  // Handle "Back to Blog" click
-  const backToButton = document.querySelector(
+  // Handle "Back to Blog" clicks (multiple buttons)
+  const backToButtons = document.querySelectorAll(
     ".blog-navigation .btn-secondary"
   );
-  if (backToButton) {
-    backToButton.addEventListener("click", function (e) {
+  backToButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
       e.preventDefault();
-      // Show blog grid and hide blog detail
-      if (blogDetailSection) blogDetailSection.style.display = "none";
+
+      // Hide all blog detail sections
+      blogDetailSections.forEach((section) => {
+        section.style.display = "none";
+      });
+
+      // Show blog grid
       if (blogSection) {
         blogSection.style.display = "block";
         blogSection.scrollIntoView({ behavior: "smooth" });
       }
     });
-  }
+  });
 });
 
 // Service Worker Registration (for PWA functionality)
