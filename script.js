@@ -672,12 +672,12 @@ const chatbotQA = {
       "what you know",
     ],
     answer:
-      "I specialize in Web Development (HTML, CSS, JavaScript, React), Backend Development (Node.js, Python, PHP), Mobile Development (Flutter, React Native), Database Management (MySQL, MongoDB), and Cloud Services (AWS, Firebase, Google Cloud).",
+      "I specialize in Web Development (HTML, CSS, JavaScript, Angular), Backend Development (Asp.net,Node.js), Database Management (PostgreSQL,SQl, MongoDB), and Cloud Services (Firebase, Google Cloud).",
   },
   experience: {
     keywords: ["experience", "work", "job", "worked", "career", "professional"],
     answer:
-      "I have 2+ years of professional experience as a Full Stack Developer. I've worked on various projects including e-commerce platforms, job notification systems, educational websites, and custom web applications. Check out my Experience section for detailed timeline!",
+      "I have 1+ year of professional experience as a Full Stack Developer. I've worked on various projects including e-commerce platforms, job notification systems, educational websites, and custom web applications. Check out my Experience section for detailed timeline!",
   },
   education: {
     keywords: [
@@ -715,7 +715,7 @@ const chatbotQA = {
       "touch",
     ],
     answer:
-      "You can reach me via email at codewithcris@gmail.com or call me at +91 8088899970. Feel free to use the contact form below or connect with me on LinkedIn and GitHub. I'm always open to new opportunities!",
+      "You can reach me via email at jayantaofficial84@gmail.com or call me at +91 9083655784. Feel free to use the contact form below or connect with me on LinkedIn and GitHub. I'm always open to new opportunities!",
   },
   services: {
     keywords: ["service", "offer", "provide", "do", "help"],
@@ -745,12 +745,12 @@ const chatbotQA = {
 };
 
 // Chatbot Elements
-const chatbotToggle = document.querySelector(".chatbot-toggle");
-const chatbotContainer = document.querySelector(".chatbot-container");
-const chatbotClose = document.querySelector(".chatbot-close");
-const chatbotMessages = document.querySelector(".chatbot-messages");
-const chatbotInput = document.querySelector(".chatbot-input");
-const chatbotSend = document.querySelector(".chatbot-send");
+const chatbotToggle = document.getElementById("chatbot-toggle");
+const chatbotContainer = document.getElementById("chatbot");
+const chatbotClose = document.getElementById("chatbot-close");
+const chatbotMessages = document.getElementById("chatbot-messages");
+const chatbotInputField = document.getElementById("chatbot-input-field");
+const chatbotSend = document.getElementById("chatbot-send");
 const chatbotSuggestions = document.querySelectorAll(".suggestion-btn");
 
 // Chatbot State
@@ -778,8 +778,13 @@ function toggleChatbot() {
 // Add Bot Message
 function addBotMessage(message) {
   const messageDiv = document.createElement("div");
-  messageDiv.className = "chatbot-message bot-message";
-  messageDiv.textContent = message;
+  messageDiv.className = "bot-message";
+
+  const contentDiv = document.createElement("div");
+  contentDiv.className = "message-content";
+  contentDiv.textContent = message;
+
+  messageDiv.appendChild(contentDiv);
   chatbotMessages.appendChild(messageDiv);
   scrollToBottom();
 }
@@ -787,8 +792,13 @@ function addBotMessage(message) {
 // Add User Message
 function addUserMessage(message) {
   const messageDiv = document.createElement("div");
-  messageDiv.className = "chatbot-message user-message";
-  messageDiv.textContent = message;
+  messageDiv.className = "user-message";
+
+  const contentDiv = document.createElement("div");
+  contentDiv.className = "message-content";
+  contentDiv.textContent = message;
+
+  messageDiv.appendChild(contentDiv);
   chatbotMessages.appendChild(messageDiv);
   scrollToBottom();
 }
@@ -817,13 +827,13 @@ function findAnswer(userMessage) {
 
 // Handle User Input
 function handleUserInput() {
-  const userMessage = chatbotInput.value.trim();
+  const userMessage = chatbotInputField.value.trim();
 
   if (userMessage === "") return;
 
   // Add user message
   addUserMessage(userMessage);
-  chatbotInput.value = "";
+  chatbotInputField.value = "";
 
   // Simulate typing delay
   setTimeout(() => {
@@ -838,7 +848,7 @@ chatbotClose.addEventListener("click", toggleChatbot);
 
 chatbotSend.addEventListener("click", handleUserInput);
 
-chatbotInput.addEventListener("keypress", (e) => {
+chatbotInputField.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     handleUserInput();
   }
