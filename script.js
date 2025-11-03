@@ -590,6 +590,46 @@ function initAboutTabs() {
 // Initialize tabs when DOM is loaded
 document.addEventListener("DOMContentLoaded", initAboutTabs);
 
+// Blog Detail Page Toggle
+document.addEventListener("DOMContentLoaded", function () {
+  // Handle "Read More" clicks on blog cards
+  const blogLinks = document.querySelectorAll(".blog-card .btn-link");
+  const blogSection = document.querySelector(".blog");
+  const blogDetailSection = document.querySelector(".blog-detail");
+
+  blogLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (href && href.startsWith("#") && href !== "#") {
+        e.preventDefault();
+        // Hide blog grid and show blog detail
+        if (blogSection) blogSection.style.display = "none";
+        if (blogDetailSection) {
+          blogDetailSection.style.display = "block";
+          // Scroll to top of blog detail
+          blogDetailSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
+  });
+
+  // Handle "Back to Blog" click
+  const backToButton = document.querySelector(
+    ".blog-navigation .btn-secondary"
+  );
+  if (backToButton) {
+    backToButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      // Show blog grid and hide blog detail
+      if (blogDetailSection) blogDetailSection.style.display = "none";
+      if (blogSection) {
+        blogSection.style.display = "block";
+        blogSection.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+});
+
 // Service Worker Registration (for PWA functionality)
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
