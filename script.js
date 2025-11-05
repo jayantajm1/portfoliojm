@@ -23,6 +23,32 @@ document.addEventListener("DOMContentLoaded", function () {
   themeIcon.className = savedTheme === "light" ? "fas fa-sun" : "fas fa-moon";
 });
 
+// Resume Dropdown Functionality
+const resumeBtn = document.getElementById("resume-btn");
+const resumeOptions = document.getElementById("resume-options");
+
+if (resumeBtn && resumeOptions) {
+  resumeBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    resumeOptions.classList.toggle("show");
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!resumeBtn.contains(e.target) && !resumeOptions.contains(e.target)) {
+      resumeOptions.classList.remove("show");
+    }
+  });
+
+  // Close dropdown after selecting an option
+  const resumeOptionLinks = resumeOptions.querySelectorAll(".resume-option");
+  resumeOptionLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      resumeOptions.classList.remove("show");
+    });
+  });
+}
+
 // Typing Animation
 function typeWriter() {
   const text = "Jayanta Mardi";

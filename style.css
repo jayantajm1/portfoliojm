@@ -902,6 +902,72 @@ nav {
     background: var(--primary-color);
 }
 
+/* Resume Dropdown */
+.resume-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.resume-dropdown .btn-secondary {
+    cursor: pointer;
+}
+
+.resume-options {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 10px);
+    background: rgba(20, 20, 30, 0.98);
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    min-width: 180px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(239, 39, 111, 0.3);
+    z-index: 1000;
+    animation: dropdownSlide 0.3s ease-out;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.resume-options.show {
+    display: flex;
+}
+
+.resume-option {
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+}
+
+.resume-option:last-child {
+    border-bottom: none;
+}
+
+.resume-option:hover {
+    background: var(--gradient-primary);
+    padding-left: 25px;
+}
+
+.resume-option i {
+    font-size: 1rem;
+}
+
 /* Typing Animation */
 .typing-animation::after {
     content: '|';
