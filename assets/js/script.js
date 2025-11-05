@@ -670,17 +670,52 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Service Worker Registration (for PWA functionality)
+// Service Worker Registration with auto-update (for PWA functionality)
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/sw.js")
       .then((registration) => {
         console.log("SW registered: ", registration);
+
+        // Check for updates every 60 seconds
+        setInterval(() => {
+          registration.update();
+        }, 60000);
+
+        // Listen for updates
+        registration.addEventListener("updatefound", () => {
+          const newWorker = registration.installing;
+
+          newWorker.addEventListener("statechange", () => {
+            if (
+              newWorker.state === "installed" &&
+              navigator.serviceWorker.controller
+            ) {
+              // New service worker available, prompt user to refresh
+              if (
+                confirm(
+                  "New version available! Reload to get the latest updates?"
+                )
+              ) {
+                newWorker.postMessage({ type: "SKIP_WAITING" });
+                window.location.reload();
+              }
+            }
+          });
+        });
       })
       .catch((registrationError) => {
         console.log("SW registration failed: ", registrationError);
       });
+  });
+
+  // Reload page when new service worker takes control
+  let refreshing;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (refreshing) return;
+    refreshing = true;
+    window.location.reload();
   });
 }
 

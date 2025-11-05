@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Cache Control Meta Tags -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <title>Jayanta Mardi - Portfolio</title>
     <link rel="icon" href="assets/images/index.jpg" type="image/x-icon" />
 
@@ -22,8 +31,8 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Main Stylesheet with cache busting -->
+    <link rel="stylesheet" href="assets/css/style.css?v=1.0.2" />
 
     <!-- EmailJS -->
     <script
@@ -1382,9 +1391,9 @@
       <span class="chatbot-badge">1</span>
     </button>
 
-    <!-- Scripts -->
+    <!-- Scripts with cache busting -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/emailjs-config.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/emailjs-config.js?v=1.0.1"></script>
+    <script src="assets/js/script.js?v=1.0.1"></script>
   </body>
 </html>

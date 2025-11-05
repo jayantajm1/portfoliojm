@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clear Cache - Portfolio</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+      .container {
+        text-align: center;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 15px 40px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #ef276f, #ff6b9d);
+        color: white;
+        cursor: pointer;
+        margin: 10px;
+        transition: transform 0.3s ease;
+      }
+      button:hover {
+        transform: translateY(-3px);
+      }
+      #status {
+        margin-top: 20px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔄 Clear Portfolio Cache</h1>
+      <p>
+        If you're seeing an old version of the portfolio, click the button below
+        to clear all cached data.
+      </p>
+      <button onclick="clearAllCache()">Clear Cache & Reload</button>
+      <button onclick="goHome()">Go to Portfolio</button>
+      <div id="status"></div>
+    </div>
+
+    <script>
+      async function clearAllCache() {
+        const status = document.getElementById("status");
+        status.textContent = "Clearing cache...";
+
+        try {
+          // Clear all caches
+          if ("caches" in window) {
+            const cacheNames = await caches.keys();
+            await Promise.all(cacheNames.map((name) => caches.delete(name)));
+            status.textContent = "✅ Cache cleared!";
+          }
+
+          // Unregister service workers
+          if ("serviceWorker" in navigator) {
+            const registrations =
+              await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations.map((reg) => reg.unregister()));
+            status.textContent = "✅ Service workers unregistered!";
+          }
+
+          // Clear localStorage and sessionStorage
+          localStorage.clear();
+          sessionStorage.clear();
+
+          status.textContent =
+            "✅ All cache cleared! Reloading in 2 seconds...";
+
+          // Reload after 2 seconds
+          setTimeout(() => {
+            window.location.href = "/index.html";
+          }, 2000);
+        } catch (error) {
+          status.textContent = "❌ Error: " + error.message;
+        }
+      }
+
+      function goHome() {
+        window.location.href = "/index.html";
+      }
+    </script>
+  </body>
+</html>
