@@ -723,6 +723,11 @@ if ("serviceWorker" in navigator) {
 
 // Q&A Database
 const chatbotQA = {
+  greetings: {
+    keywords: ["hi", "hello", "hlw", "hey", "hello there"],
+    answer:
+      "Hello — I'm your quick assistant. How can I help you today? Ask me about my skills, experience, projects, or anything else you'd like to know.",
+  },
   skills: {
     keywords: [
       "skill",
@@ -802,6 +807,41 @@ const chatbotQA = {
     keywords: ["hire", "cost", "price", "rate", "budget", "quote"],
     answer:
       "I'd love to work with you! Project costs vary based on requirements, complexity, and timeline. Please fill out the contact form with your project details, and I'll provide a customized quote within 24 hours!",
+  },
+  resume: {
+    keywords: ["resume", "cv", "curriculum", "download resume", "download cv"],
+    answer:
+      "You can download my resume from the Resume section on this site or request a copy via email at jayantaofficial84@gmail.com. Would you like me to open the Resume section for you?",
+  },
+  social: {
+    keywords: ["github", "linkedin", "social", "profiles", "social media"],
+    answer:
+      "Find my work and connect with me on GitHub: https://github.com/jayantajm1 and LinkedIn: https://www.linkedin.com/in/jayanta-mardi/ — feel free to follow or message me there!",
+  },
+  blog: {
+    keywords: ["blog", "articles", "posts", "write"],
+    answer:
+      "I write occasional technical posts and guides. Check the Blog section on this site for the latest articles like 'HP WiFi Fixer'. Would you like me to open the Blog section?",
+  },
+  certifications: {
+    keywords: ["certification", "certificate", "courses", "certified"],
+    answer:
+      "I've completed a number of online certifications in Web Development, Cloud Computing, and Cybersecurity. You can find details in the Education section or request specific certificates by email.",
+  },
+  process: {
+    keywords: ["process", "how you work", "workflow", "development process"],
+    answer:
+      "My typical process: 1) Requirements & discovery, 2) Proposal & timeline, 3) Design & development, 4) Testing & review, 5) Deployment & support. I keep regular communication and deliver incremental updates.",
+  },
+  demo: {
+    keywords: ["demo", "show", "preview", "live demo"],
+    answer:
+      "I can provide demos or walkthroughs of past projects. Tell me which project you're interested in and I can prepare a short demo or provide a link to a live preview.",
+  },
+  testimonials: {
+    keywords: ["testimonials", "reviews", "feedback", "clients"],
+    answer:
+      "You can find client feedback and testimonials in the Testimonials section on this site. If you'd like, I can show you recent client reviews or share references.",
   },
 };
 
